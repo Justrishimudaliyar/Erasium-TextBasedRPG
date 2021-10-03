@@ -1,5 +1,6 @@
 #include "Character.h"
 
+
 void hud();
 void combat();
 void combatHud();
