@@ -44,9 +44,14 @@ void hud() {
 	else if (character.level == 5) {
 		character.mapName = "Biblio";
 	}
+	std::cout << BLUE;
 	std::cout << "Name: " << character.name << "			Health: " << character.totalHealth << "\nBrand: " << character.brand
 		<< "\nSex: " << character.sex << "\nLevel: " << character.level << "\nXP: " << character.current_xp << "\nXp to Level: " << character.xp_to_level << 
 		"\nName of Location: " << character.mapName << std::endl;
+	std::cout << std::endl;
+	std::cout << "\n";
+
+	std::cout << WHITE;
 	moving();
 
 }
@@ -54,8 +59,10 @@ void hud() {
 void combatHud() {
 	Sleep(2000);
 	system("cls");
+	std::cout << RED;
 	std::cout << "Name: " << character.name << "\t|\tMonster Name: " << currentMonster << "\nTotal Health: " << character.totalHealth << "\t|\tMonster Health: "
 		<< monsterHp << "\nLevel: " << character.level << "\t|\tMonster Level: " << monsterLevel << std::endl;
+	std::cout << WHITE;
 }
 
 void combat() { 
@@ -67,6 +74,8 @@ void combat() {
 
 	if (character.totalHealth >= 1 && monsterHp >= 1) {
 		std::cout << std::endl;
+		std::string first = "What do you wish to do?";
+		character.printer(first);
 		std::cout << "1. Write\n";
 		std::cout << "2. Sharpen\n";
 		std::cout << "3. Run away";
@@ -108,12 +117,13 @@ void combat() {
 				Sleep(1000);
 				hud();
 			}
-			Sleep(1000);
+			Sleep(500);
 			combat();
 		}
 		else if (playerAttack == 2) {
 			//block
 			std::cout << "Blocking and Sharpening!\n";
+			srand(time(0));
 			int i = rand() % 100 + 1;
 			if(i >= 70) {
 				std::cout << "You blocked the incoming attack!\n";
@@ -127,13 +137,14 @@ void combat() {
 				std::cout << "You failed to block the attack\n";
 				character.totalHealth -= monsterAttack;
 				std::cout << "You words were erased from existence, you took damage for " << monsterAttack << " current HP is " << character.totalHealth << std::endl;
-				Sleep(1000);
+				Sleep(500);
 				combat();
 			}
 		}
 		else if (playerAttack == 3) {
 			//run
 			std::cout << "You try to write somewhere else and run\n";
+			srand(time(0));
 			int x = rand() % 100 + 1;
 			if (x >= 70) {
 				std::cout << "You run away for now and live to write next time\n";
@@ -145,7 +156,7 @@ void combat() {
 				character.totalHealth -= monsterAttack + 10;
 				std::cout << "The monster has erased some of your words\n";
 				std::cout << "You suffered " << monsterAttack + 10 << " Your current health is " << character.totalHealth << std::endl;
-				Sleep(1000);
+				Sleep(500);
 				combat();
 			}
 		}	
@@ -160,14 +171,17 @@ void combat() {
 void moving() {
 	int choice;
 
+	std::string first = "What do you wish to do?";
+	character.printer(first);
 	std::cout << "1. Write Forward\n";
 	std::cout << "2. Sharpen\n";
-	std::cout << "3. Overwritw Backwards\n";
+	std::cout << "3. Overwrite Backwards\n";
 	std::cout << "\n\n";
 
 	std::cin >> choice;
 
 	if (choice == 1) {
+		srand(time(0));
 		int temp = rand() % 100 + 1;
 		std::cout << "You begin writing forward...\n";
 		if (temp >= 60) {
@@ -193,6 +207,7 @@ void moving() {
 		hud();
 	}
 	else if (choice == 3) {
+		srand(time(0));
 		int temp = rand() % 100 + 1;
 		std::cout << "You begin overwriting backward...\n";
 		if (temp >= 50) {
@@ -205,7 +220,7 @@ void moving() {
 			combat();
 		}
 		std::cout << "You find nothing of Interest!\n";
-		Sleep(1000);
+		Sleep(500);
 		hud();
 	}
 	else {
@@ -218,8 +233,8 @@ void moving() {
 void levelUp() {
 
 	if (character.current_xp >= character.xp_to_level) {
-		character.xp_to_level += floor(character.level + 25 * pow(2, character.level/7));
-		character.totalHealth = floor(character.totalHealth + 12 * pow(2, character.level / 8));
+		character.xp_to_level += floor(character.level + 12 * pow(2, character.level/7));
+		character.totalHealth = floor(character.totalHealth + 6 * pow(2, character.level / 8));
 
 		if (character.level >= character.minLevel && character.level <= character.maxLevel) {
 			character.level++;
@@ -240,7 +255,9 @@ void levelUp() {
 
 void createMonster() {
 	monsterHp = 30;
+	srand(time(0));
 	monsterLevel = (rand() % 3) + character.level;
+	srand(time(0));
 	monsterHp = (rand() % 30) * monsterLevel;
 	monsterXp = monsterHp;
 

@@ -18,8 +18,8 @@ public:
 	int maxLevel;
 	int mapLevel = 0;
 	std::string mapName;
-
+	std::string first;
 	void characterCreation();
-
+	void printer(std::string n);
 };
 

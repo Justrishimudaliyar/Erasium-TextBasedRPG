@@ -16,25 +16,47 @@ Character::Character() {
 	heal = 0;
 	mapName = " ";
 	mapLevel = 0;
+	first = "In a far away land...";
 	playerBrand = { "nataraj", "apsara", "camlin", "doms", "fabercastle" };
+}
+
+
+void Character::printer(std::string n) {
+	int x = 0;
+	while (n[x] != '\0')
+	{
+		std::cout << n[x];
+		Sleep(50);
+		x++;
+	};
+	std::cout << "\n";
 }
 
 void Character::characterCreation() {
 	
-	std::cout << "In a far away land..." << std::endl;
+	printer(first);
 	Sleep(500);
-	std::cout << "where reality wasn't what we see today..." << std::endl;
+	first = "where reality wasn't what we see today...";
+	printer(first);
 	Sleep(500);
-	std::cout << "Where words meant everything and the people who destroyed them were the evil!" << std::endl;
-	std::cout << "The World of Erasium!!! where words were the strength and beckoning of commoners" << std::endl;
+	first = "Where words meant everything and the people who destroyed them were the evil!";
+	printer(first);
+	first = "The World of Erasium!!! where words were the strength and beckoning of commoners";
+	printer(first);
 	Sleep(500);
-	std::cout << "\n";
-	Sleep(500);
+
+	std::cout << "Get ready...";
+	Sleep(00);
 	system("cls");
 
 	int counter = 3;
 	std::cout << "Enter your name PencilWarrior: " << std::endl;
 	std::cin >> name;
+
+	first = "Loading............";
+	printer(first);
+	Sleep(500);
+	system("cls");
 
 	std::cout << "Enter your brand name PencilWarrior: " << std::endl;
 	std::cout << "Nataraj\n";
@@ -44,6 +66,11 @@ void Character::characterCreation() {
 	std::cout << "FaberCastle\n";
 	std::cout << "Type your brand of pencil below \n\n";
 	std::cin >> brand;
+
+	first = "Loading............";
+	printer(first);
+	Sleep(500);
+	system("cls");
 
 	std::for_each(brand.begin(), brand.end(), [](char& c) {
 		c = ::tolower(c);
@@ -79,6 +106,11 @@ void Character::characterCreation() {
 	std::cout << std::endl;
 	std::cout << "Enter your sex PencilWarrior: " << std::endl;
 	std::cin >> sex;
+
+	first = "Loading............";
+	printer(first);
+	Sleep(500);
+	
 	system("cls");
 
 	for (int i = 0; i <= counter; i++) {
