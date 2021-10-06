@@ -1,13 +1,11 @@
 #include "Character.h"
 
-
 void hud();
 void combat();
 void combatHud();
 void moving();
 void createMonster();
 void levelUp();
-
 
 int monsterHp = 0, monsterXp = 0, monsterLevel = 0;
 std::string monsterName[] = { "TissuePaper", "Rubber", "Whitener", "PencilEraser", "Tearer", "InkRubber"};
@@ -53,7 +51,6 @@ void hud() {
 
 	std::cout << WHITE;
 	moving();
-
 }
 
 void combatHud() {
