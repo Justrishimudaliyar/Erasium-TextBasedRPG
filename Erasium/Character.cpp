@@ -49,7 +49,7 @@ void Character::characterCreation() {
 	Sleep(00);
 	system("cls");
 
-	int counter = 3;
+	int counter = 10;
 	std::cout << "Enter your name PencilWarrior: " << std::endl;
 	std::cin >> name;
 
@@ -114,6 +114,7 @@ void Character::characterCreation() {
 	system("cls");
 
 	for (int i = 0; i <= counter; i++) {
+		
 		if (i == 0) {
 			std::cout << "Creating character.\n";
 		}

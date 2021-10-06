@@ -44,7 +44,7 @@ void hud() {
 	else if (character.level == 5) {
 		character.mapName = "Biblio";
 	}
-	std::cout << BLUE;
+	std::cout << GREEN;
 	std::cout << "Name: " << character.name << "			Health: " << character.totalHealth << "\nBrand: " << character.brand
 		<< "\nSex: " << character.sex << "\nLevel: " << character.level << "\nXP: " << character.current_xp << "\nXp to Level: " << character.xp_to_level << 
 		"\nName of Location: " << character.mapName << std::endl;
@@ -266,5 +266,21 @@ void createMonster() {
 	}
 	if (monsterLevel == 0) {
 		createMonster();
+	}
+}
+
+void createBoss() {
+	int bossHp = 500;
+	srand(time(0));
+	int bossLevel = (rand() % 3) + character.level;
+	srand(time(0));
+	bossHp = (rand() % 30) * monsterLevel;
+	int bossXp = bossHp;
+}
+
+void bossLevel() {
+	while (character.mapName == "Biblio") {
+		createBoss();
+		break;
 	}
 }
